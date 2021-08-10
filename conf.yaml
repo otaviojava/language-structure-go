@@ -1,0 +1,4 @@
+conf:
+  hits: 5
+  time: 5000000
+  camelCase: sometext
