@@ -6,9 +6,12 @@ import (
 )
 
 func NewRules() *engine.RuleManager {
-	return engine.NewRuleManager(rules(), extensions())
+	return engine.NewRuleManager(name(), rules(), extensions())
 }
 
+func name() string {
+	return "Java"
+}
 func extensions() []string {
 	return []string{".java"}
 }
