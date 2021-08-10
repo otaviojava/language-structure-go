@@ -1,0 +1,10 @@
+name: Java
+extensions:
+  - .java
+  - .jsp
+type: AndMatch
+expressions:
+  - extends\sMessageDigest
+  - @Override
+  - protected\sbyte\[\]\sengineDigest\(\)
+
