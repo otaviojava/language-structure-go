@@ -31,7 +31,7 @@ func readConf(filename string) (*myData, error) {
 }
 
 func main() {
-	c, err := readConf("conf.yaml")
+	c, err := readConf("languages/conf.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
