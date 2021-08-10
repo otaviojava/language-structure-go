@@ -13,6 +13,6 @@ func main() {
 	}
 	manager := l.ToRuleManager()
 	fmt.Printf("%v", l)
-	fmt.Println("The sample code: ")
+	fmt.Println("The sample code ")
 	fmt.Println("The rule manager is", manager)
 }
