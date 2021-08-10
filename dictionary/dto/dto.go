@@ -15,16 +15,8 @@ type Language struct {
 
 type Rule struct {
 	TYPE string
-	Metadata Metadata
+	Metadata engine.Metadata
 	Expressions []string
-}
-
-type Metadata struct {
-	Id string
-	Name string
-	Description string
-	Severity string
-	Confidence string
 }
 
 func (language Language) ToRuleManager() *engine.RuleManager {
