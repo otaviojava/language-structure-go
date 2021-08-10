@@ -32,6 +32,7 @@ const (
 // RuleManager is a generic implementation of formatters.RuleManager
 // that can be reused between all engines to load rules
 type RuleManager struct {
+	Name string
 	Rules      []Rule
 	Extensions []string
 }
@@ -68,8 +69,9 @@ func (s Severity) ToString() string {
 }
 
 
-func NewRuleManager(rules []Rule, extensions []string) *RuleManager {
+func NewRuleManager(name string, rules []Rule, extensions []string) *RuleManager {
 	return &RuleManager{
+		Name: name,
 		Rules:      rules,
 		Extensions: extensions,
 	}
