@@ -13,12 +13,12 @@ func extensions() []string {
 func rules() []Rule {
 	var java []Rule
 	{
-		NewJavaAndMessageDigestIsCustom()
+		newJavaAndMessageDigestIsCustom()
 	}
 	return java
 }
 
-func NewJavaAndMessageDigestIsCustom() TextRule {
+func newJavaAndMessageDigestIsCustom() TextRule {
 	return TextRule{
 		Metadata: Metadata{
 			ID:          "d34c6b79-4051-4f73-bf8e-37db9becc896",

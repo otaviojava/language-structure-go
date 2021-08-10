@@ -1,4 +1,4 @@
-package dictionary
+package engine
 
 import "regexp"
 
@@ -32,8 +32,8 @@ const (
 // RuleManager is a generic implementation of formatters.RuleManager
 // that can be reused between all engines to load rules
 type RuleManager struct {
-	rules      []Rule
-	extensions []string
+	Rules      []Rule
+	Extensions []string
 }
 
 // Rule defines a generic rule for any kind of analysis the engine have to execute
@@ -70,7 +70,7 @@ func (s Severity) ToString() string {
 
 func NewRuleManager(rules []Rule, extensions []string) *RuleManager {
 	return &RuleManager{
-		rules:      rules,
-		extensions: extensions,
+		Rules:      rules,
+		Extensions: extensions,
 	}
 }
