@@ -6,7 +6,6 @@ import (
 	"log"
 )
 
-
 func main() {
 	l, err := dto.ReadConf("languages/java.yaml")
 	if err != nil {
