@@ -11,3 +11,14 @@ type RuleManager struct {
 type Rule interface {
 	IsFor(UnitType) bool // Indicates which kind of program unit this rules can be ran on
 }
+
+// UnitType defines which type of content, and therefore, which kind of rule
+// is needed in order to extract information about the program we are analyzing
+type UnitType int
+
+func NewRuleManager(rules []Rule, extensions []string) *RuleManager {
+	return &RuleManager{
+		rules:      rules,
+		extensions: extensions,
+	}
+}
