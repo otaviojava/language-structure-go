@@ -1,0 +1,12 @@
+package data
+
+import "language-structure/dictionary/engine"
+
+type Languages struct {
+	data map[string]engine.RuleManager
+}
+
+func (data Languages) Contains(key string) bool {
+	_, ok := data.data[key]
+	return ok
+}
