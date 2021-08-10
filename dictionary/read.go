@@ -2,38 +2,18 @@ package main
 
 import (
 	"fmt"
-	"gopkg.in/yaml.v3"
-	"io/ioutil"
+	"language-structure/dictionary/dto"
 	"log"
 )
 
-type myData struct {
-	Conf struct {
-		Hits      int64
-		Time      int64
-		CamelCase string `yaml:"camelCase"`
-	}
-}
-
-func readConf(filename string) (*myData, error) {
-	buf, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	c := &myData{}
-	err = yaml.Unmarshal(buf, c)
-	if err != nil {
-		return nil, fmt.Errorf("in file %q: %v", filename, err)
-	}
-
-	return c, nil
-}
 
 func main() {
-	c, err := readConf("languages/conf.yaml")
+	c, err := dto.ReadConf("languages/java.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
+	manager := c.ToRuleManager()
 	fmt.Printf("%v", c)
+	fmt.Println("The sample code: ")
+	fmt.Println("The rule manager is", manager)
 }
