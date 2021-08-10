@@ -8,12 +8,12 @@ import (
 
 
 func main() {
-	c, err := dto.ReadConf("languages/java.yaml")
+	l, err := dto.ReadConf("languages/java.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
-	manager := c.ToRuleManager()
-	fmt.Printf("%v", c)
+	manager := l.ToRuleManager()
+	fmt.Printf("%v", l)
 	fmt.Println("The sample code: ")
 	fmt.Println("The rule manager is", manager)
 }
