@@ -23,3 +23,8 @@ func (data *Languages) Size() int {
 func (data *Languages) Add(ruleManager *engine.RuleManager) {
 	data.data[ruleManager.Name] = *ruleManager
 }
+
+func (data *Languages) Get(key string) (engine.RuleManager, bool) {
+	val, ok := data.data[key]
+	return val, ok
+}
