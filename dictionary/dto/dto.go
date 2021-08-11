@@ -46,7 +46,7 @@ func (rule rule) toTextRule() engine.TextRule {
 }
 
 func (language Language) ToRuleManager() *engine.RuleManager {
-	rules := []engine.Rule{}
+	var rules []engine.Rule
 	for _, rule := range language.Rules {
 		rules = append(rules, rule.toTextRule())
 	}
