@@ -2,13 +2,14 @@ package data
 
 import (
 	"language-structure/dictionary/dto"
+	"language-structure/dictionary/engine"
 	"os"
 	"path"
 	"runtime"
 	"testing"
 )
 
-var (
+const (
 	javaLanguage = "Java"
 )
 
@@ -54,5 +55,31 @@ func TestShouldCreateRuleManager(t *testing.T) {
 	if data.Size() != 1 {
 		t.Errorf("The value should have one element")
 	}
+	_, ok := data.Get(javaLanguage)
+	if !ok {
+		t.Errorf("The data should be there")
+	}
 
 }
+
+func TestShouldMergeFiles(t *testing.T) {
+	yamlFile := dir() + "/languages/java.yaml"
+	yamlFile2 := dir() + "/languages/java_2.yaml"
+	data := Create()
+	_, ok := data.Get(javaLanguage)
+	if ok {
+		t.Errorf("The data should be empty")
+	}
+	data.Add(createReadRuleManager(yamlFile))
+	data.Add(createReadRuleManager(yamlFile2))
+
+}
+
+func createReadRuleManager(file string)  *engine.RuleManager  {
+	conf, _ := dto.ReadConf(file)
+	return conf.ToRuleManager()
+}
+
+//create merge code
+//should ignore when it has the same id
+//should avoid duplicated
