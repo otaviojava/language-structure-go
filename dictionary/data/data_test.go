@@ -84,6 +84,21 @@ func TestShouldMergeFiles(t *testing.T) {
 	}
 }
 
+func TestShouldAvoidDuplicateExtensions(t *testing.T) {
+	data := Create()
+	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_3.yaml"))
+	java, ok :=data.Get(javaLanguage)
+	if !ok {
+		t.Errorf("The 'Java' element should be in the structure")
+	}
+	extensions := []string{".java", ".jsp"}
+	if !reflect.DeepEqual(java.Extensions, extensions) {
+		t.Errorf("The extensions structure should have '.java' and '.jsp' %s", java.Extensions)
+	}
+}
+
 func createReadRuleManager(file string)  *engine.RuleManager  {
 	conf, _ := dto.ReadConf(file)
 	return conf.ToRuleManager()
