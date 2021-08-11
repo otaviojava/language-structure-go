@@ -102,6 +102,20 @@ func TestShouldNotHaveDuplicateExtensions(t *testing.T) {
 	}
 }
 
+func TestNotHaveDuplicatedRules(t *testing.T)  {
+	data := Create()
+	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_3.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_4.yaml"))
+	java, ok := data.Get(javaLanguage)
+	if !ok {
+		t.Errorf("The 'Java' element should be in the structure")
+	}
+	if len(java.Rules) != 3 {
+		t.Errorf("It should have three rules inside the Java rule, current size %d", len(java.Rules))
+	}
+}
 func createReadRuleManager(file string) *engine.RuleManager {
 	conf, _ := dto.ReadConf(file)
 	return conf.ToRuleManager()
