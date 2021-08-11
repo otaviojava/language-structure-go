@@ -7,6 +7,7 @@ import (
 	"path"
 	"reflect"
 	"runtime"
+	"sort"
 	"testing"
 )
 
@@ -93,7 +94,9 @@ func TestShouldAvoidDuplicateExtensions(t *testing.T) {
 	if !ok {
 		t.Errorf("The 'Java' element should be in the structure")
 	}
-	extensions := []string{".java", ".jsp"}
+	extensions := []string{".jsp", ".java"}
+	sort.Strings(java.Extensions)
+	sort.Strings(extensions)
 	if !reflect.DeepEqual(java.Extensions, extensions) {
 		t.Errorf("The extensions structure should have '.java' and '.jsp' %s", java.Extensions)
 	}
