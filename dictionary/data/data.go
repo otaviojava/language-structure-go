@@ -10,3 +10,7 @@ func (data Languages) Contains(key string) bool {
 	_, ok := data.data[key]
 	return ok
 }
+
+func (data Languages) Size() int  {
+	return len(data.data)
+}
