@@ -75,7 +75,7 @@ func TestShouldMergeFiles(t *testing.T) {
 	data.Add(createReadRuleManager(yamlFile))
 	data.Add(createReadRuleManager(yamlFile2))
 
-	java, ok :=data.Get(javaLanguage)
+	java, ok := data.Get(javaLanguage)
 	if !ok {
 		t.Errorf("The 'Java' element should be in the structure")
 	}
@@ -90,7 +90,7 @@ func TestShouldNotHaveDuplicateExtensions(t *testing.T) {
 	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
 	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
 	data.Add(createReadRuleManager(dir() + "/languages/java_3.yaml"))
-	java, ok :=data.Get(javaLanguage)
+	java, ok := data.Get(javaLanguage)
 	if !ok {
 		t.Errorf("The 'Java' element should be in the structure")
 	}
@@ -102,7 +102,7 @@ func TestShouldNotHaveDuplicateExtensions(t *testing.T) {
 	}
 }
 
-func createReadRuleManager(file string)  *engine.RuleManager  {
+func createReadRuleManager(file string) *engine.RuleManager {
 	conf, _ := dto.ReadConf(file)
 	return conf.ToRuleManager()
 }
