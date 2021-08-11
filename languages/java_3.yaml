@@ -1,0 +1,15 @@
+name: Java
+extensions:
+  - .jsp
+rules:
+  - type: AndMatch
+    metadata:
+      id: "d34c6b79-4051-4f73-bf8e-37db9becc111"
+      name: "Message digest is custom"
+      description: "Implementing a custom MessageDigest is error-prone. NIST recommends the use of SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, or SHA-512/256. For more information checkout the CWE-327 (https://cwe.mitre.org/data/definitions/327.html) advisory."
+      severity: High
+      confidence: Medium
+    expressions:
+      - 'extends\sMessageDigest'
+      - '@Override'
+      - 'protected\sbyte\[\]\sengineDigest\(\)'
