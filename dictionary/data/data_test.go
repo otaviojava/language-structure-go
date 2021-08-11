@@ -85,7 +85,7 @@ func TestShouldMergeFiles(t *testing.T) {
 	}
 }
 
-func TestShouldAvoidDuplicateExtensions(t *testing.T) {
+func TestShouldNotHaveDuplicateExtensions(t *testing.T) {
 	data := Create()
 	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
 	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
