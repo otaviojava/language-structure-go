@@ -21,9 +21,9 @@ type rule struct {
 }
 
 func (rule rule) toExpressions() []*regexp.Regexp {
-	expressions := []*regexp.Regexp{}
+	var expressions []*regexp.Regexp
 	for _, expression := range rule.expressions {
-		expressions=append(expressions, regexp.MustCompile(expression))
+		expressions = append(expressions, regexp.MustCompile(expression))
 	}
 	return expressions
 }
