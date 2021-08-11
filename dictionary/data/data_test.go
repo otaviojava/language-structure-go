@@ -5,6 +5,7 @@ import (
 	"language-structure/dictionary/engine"
 	"os"
 	"path"
+	"reflect"
 	"runtime"
 	"testing"
 )
@@ -73,6 +74,14 @@ func TestShouldMergeFiles(t *testing.T) {
 	data.Add(createReadRuleManager(yamlFile))
 	data.Add(createReadRuleManager(yamlFile2))
 
+	java, ok :=data.Get(javaLanguage)
+	if !ok {
+		t.Errorf("The 'Java' element should be in the structure")
+	}
+	extensions := []string{".java", ".jsp"}
+	if !reflect.DeepEqual(java.Extensions, extensions) {
+		t.Errorf("The extensions structure should have '.java' and '.jsp'")
+	}
 }
 
 func createReadRuleManager(file string)  *engine.RuleManager  {
