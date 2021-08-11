@@ -20,6 +20,6 @@ func (data *Languages) Size() int {
 	return len(data.data)
 }
 
-func (data *Languages) Add(ruleManager engine.RuleManager) {
-	data.data[ruleManager.Name] = ruleManager
+func (data *Languages) Add(ruleManager *engine.RuleManager) {
+	data.data[ruleManager.Name] = *ruleManager
 }
