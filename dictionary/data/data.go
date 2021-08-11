@@ -21,7 +21,13 @@ func (data *Languages) Size() int {
 }
 
 func (data *Languages) Add(ruleManager *engine.RuleManager) {
-	data.data[ruleManager.Name] = *ruleManager
+	language, ok := data.data[ruleManager.Name]
+	if ok {
+		language.Extensions = append(language.Extensions, ruleManager.Extensions...)
+		data.data[language.Name] = language
+	} else {
+		data.data[ruleManager.Name] = *ruleManager
+	}
 }
 
 func (data *Languages) Get(key string) (engine.RuleManager, bool) {
