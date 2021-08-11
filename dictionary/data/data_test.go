@@ -1,7 +1,6 @@
 package data
 
 import (
-	"fmt"
 	"language-structure/dictionary/dto"
 	"os"
 	"path"
@@ -45,10 +44,8 @@ func TestShouldCreateRuleManager(t *testing.T) {
 		print("file does not exist")
 	}
 	data := Create()
-	l, _ := dto.ReadConf(yamlFile)
-	language := l.ToRuleManager()
-	fmt.Println("Test ", language.Name)
-	data.Add(language)
+	language, _ := dto.ReadConf(yamlFile)
+	data.Add(language.ToRuleManager())
 
 	if !data.Contains(javaLanguage) {
 		t.Errorf("Should have Java language")
