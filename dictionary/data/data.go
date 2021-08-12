@@ -43,7 +43,7 @@ func includeRules(rules, newRules []engine.Rule) []engine.Rule {
 		var object interface{} = val
 		r, ok := object.(engine.TextRule)
 		if ok {
-			check[r.Name] = r
+			check[r.ID] = r
 		} else {
 			check[strconv.Itoa(id)] = val
 			id++
