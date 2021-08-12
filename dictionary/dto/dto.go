@@ -16,13 +16,13 @@ type Language struct {
 
 type rule struct {
 	Type        string
-	metadata    engine.Metadata
-	expressions []string
+	Metadata    engine.Metadata
+	Expressions []string
 }
 
 func (rule rule) toExpressions() []*regexp.Regexp {
 	var expressions []*regexp.Regexp
-	for _, expression := range rule.expressions {
+	for _, expression := range rule.Expressions {
 		expressions = append(expressions, regexp.MustCompile(expression))
 	}
 	return expressions
@@ -42,7 +42,7 @@ func (rule rule) toMatchType() engine.MatchType {
 }
 
 func (rule rule) toTextRule() engine.TextRule {
-	return engine.TextRule{rule.metadata, rule.toMatchType(), rule.toExpressions()}
+	return engine.TextRule{rule.Metadata, rule.toMatchType(), rule.toExpressions()}
 }
 
 func (language Language) ToRuleManager() *engine.RuleManager {
