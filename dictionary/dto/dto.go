@@ -59,11 +59,11 @@ func ReadConf(filename string) (*Language, error) {
 		return nil, err
 	}
 
-	c := &Language{}
-	err = yaml.Unmarshal(buf, c)
+	l := &Language{}
+	err = yaml.Unmarshal(buf, l)
 	if err != nil {
 		return nil, fmt.Errorf("in file %q: %v", filename, err)
 	}
 
-	return c, nil
+	return l, nil
 }
