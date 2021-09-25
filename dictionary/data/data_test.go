@@ -116,6 +116,18 @@ func TestNotHaveDuplicatedRules(t *testing.T)  {
 		t.Errorf("It should have three rules inside the Java rule, current size %d", len(java.Rules))
 	}
 }
+
+func TestFindRuleById(t *testing.T) {
+	data := Create()
+	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_3.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_4.yaml"))
+	_, ok := data.FindRuleById(javaLanguage)
+	if !ok {
+		t.Errorf("The 'Java' element should be in the structure")
+	}
+}
 func createReadRuleManager(file string) *engine.RuleManager {
 	conf, _ := dto.ReadConf(file)
 	return conf.ToRuleManager()
