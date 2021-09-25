@@ -14,8 +14,8 @@ func Create() Languages {
 	return l
 }
 
-func (data *Languages) Contains(key string) bool {
-	_, ok := data.data[key]
+func (data *Languages) Contains(language string) bool {
+	_, ok := data.data[language]
 	return ok
 }
 
@@ -66,7 +66,7 @@ func includeExtensions(extensions, newExtensions []string) []string {
 	}
 	return extensionsMerge
 }
-func (data *Languages) Get(key string) (engine.RuleManager, bool) {
-	val, ok := data.data[key]
+func (data *Languages) Get(language string) (engine.RuleManager, bool) {
+	val, ok := data.data[language]
 	return val, ok
 }
