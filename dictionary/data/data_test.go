@@ -121,6 +121,3 @@ func createReadRuleManager(file string) *engine.RuleManager {
 	return conf.ToRuleManager()
 }
 
-//create merge code
-//should ignore when it has the same id
-//should avoid duplicated
