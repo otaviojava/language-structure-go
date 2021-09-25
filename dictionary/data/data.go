@@ -70,3 +70,16 @@ func (data *Languages) Get(language string) (engine.RuleManager, bool) {
 	val, ok := data.data[language]
 	return val, ok
 }
+
+func (data *Languages) FindRuleById(ruleId string) (engine.Rule, bool) {
+	for _, manager := range data.data {
+		for _, rule := range manager.Rules {
+			var object interface{} = rule
+			r, ok := object.(engine.TextRule)
+			if ok && r.ID == ruleId {
+				return r, true
+			}
+		}
+	}
+	return nil, false
+}
