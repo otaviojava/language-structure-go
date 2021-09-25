@@ -129,6 +129,20 @@ func TestFindRuleById(t *testing.T) {
 		t.Errorf("The {id} element should be in the structure")
 	}
 }
+
+func TestShouldNotFindRuleById(t *testing.T) {
+	id:= "id-not-exist"
+	data := Create()
+	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_3.yaml"))
+	data.Add(createReadRuleManager(dir() + "/languages/java_4.yaml"))
+	_, ok := data.FindRuleById(id)
+	if ok {
+		t.Errorf("The id does not exist in the structure")
+	}
+}
+
 func createReadRuleManager(file string) *engine.RuleManager {
 	conf, _ := dto.ReadConf(file)
 	return conf.ToRuleManager()
