@@ -118,14 +118,15 @@ func TestNotHaveDuplicatedRules(t *testing.T)  {
 }
 
 func TestFindRuleById(t *testing.T) {
+	id:= "d34c6b79-4051-4f73-bf8e-37db9becc111"
 	data := Create()
 	data.Add(createReadRuleManager(dir() + "/languages/java.yaml"))
 	data.Add(createReadRuleManager(dir() + "/languages/java_2.yaml"))
 	data.Add(createReadRuleManager(dir() + "/languages/java_3.yaml"))
 	data.Add(createReadRuleManager(dir() + "/languages/java_4.yaml"))
-	_, ok := data.FindRuleById(javaLanguage)
+	_, ok := data.FindRuleById(id)
 	if !ok {
-		t.Errorf("The 'Java' element should be in the structure")
+		t.Errorf("The {id} element should be in the structure")
 	}
 }
 func createReadRuleManager(file string) *engine.RuleManager {
